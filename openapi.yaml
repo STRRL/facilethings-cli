@@ -1,0 +1,192 @@
+openapi: 3.0.0
+servers:
+  - url: 'https://api.facilethings.com/v1'
+    description: The default FacileThings server
+info:
+  description: This is the OpenAPI for `app.facilethings.com`.
+  version: 0.0.1
+  title: FacileThings API
+  termsOfService: ''
+  contact:
+    email: im@strrl.dev
+    name: STRRL
+    url: 'https://github.com/STRRL/facilethings-cli'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags: []
+paths:
+  /stuff/get_list:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        - name: list
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - '0'
+              - '1'
+              - '2'
+              - '3'
+              - '4'
+              - '5'
+              - '6'
+              - '7'
+            default: '0'
+          description: |
+            The list is an enum, with meaning:
+
+            0. Inbox
+            1. Someday/Maybe
+            2. Reference
+            3. Calendar
+            4. Next Actions
+            5. Waiting For
+            6. Trash
+            7. Done
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+          description: ' Number. Only needed if total >250, in order to show the next pages (see explanation below)'
+        - name: tags
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter stuff by tags. Represented in the dot-separated string array.
+        - name: person
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter by the person tag.
+        - name: area
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter by the ID of Area of Responsibility.
+        - name: goal
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter by the ID of a Goal.
+        - name: focus
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+          description: >-
+            Boolean, to get only the focused items (important). Only valid on
+            Next Actions.
+        - name: time
+          in: query
+          required: false
+          schema:
+            type: string
+          description: >-
+            Number, to get the items with a shorter expected time, in minutes.
+            Only valid on Next Actions. &time=60
+        - name: energy
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - high
+              - low
+          description: high/low. Filter. Only valid on Next Actions. &energy=high
+        - name: urgent
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+          description: >-
+            Urgent. Boolean, to get only the urgent items (priority). Only valid
+            on Next Actions. &urgent=true
+      operationId: /stuff/get_list
+      responses:
+        '200':
+          description: The reponse of list stuff
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StuffResponse'
+externalDocs:
+  description: ''
+  url: 'https://github.com/STRRL/facilethings-cli'
+components:
+  schemas:
+    StuffResponse:
+      properties:
+        stuff:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int32
+            text:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            reminder:
+              type: string
+              format: nullable
+            time:
+              type: string
+              format: nullable
+            energy:
+              type: string
+              format: nullable
+            priority:
+              type: integer
+              format: int32
+            important:
+              type: integer
+              format: int32
+            goal_id:
+              type: string
+              format: nullable
+            area_id:
+              type: integer
+              format: int32
+            checkpoints_count:
+              type: integer
+              format: int32
+            checkpoints_done:
+              type: integer
+              format: int32
+            writings_count:
+              type: integer
+              format: int32
+            project:
+              type: object
+              properties:
+                name:
+                  type: string
+            tags:
+              type: array
+              items: {}
+  links: {}
+  callbacks: {}
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: 'https://api.facilethings.com/oauth/token'
+          scopes: {}
+security: []
