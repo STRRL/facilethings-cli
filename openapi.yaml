@@ -1,6 +1,6 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://api.facilethings.com/v1'
+  - url: 'https://api.facilethings.com'
     description: The default FacileThings server
 info:
   description: This is the OpenAPI for `app.facilethings.com`.
@@ -16,7 +16,26 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 tags: []
 paths:
-  /stuff/get_list:
+  /oauth/token:
+    post:
+      summary: login with OAuth
+      description: ''
+      parameters: []
+      operationId: OauthToken
+      responses:
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthFlowPasswordResponseBody'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthFlowPasswordRequestBody'
+  /v1/stuff/get_list:
     get:
       summary: ''
       description: ''
@@ -116,7 +135,7 @@ paths:
           description: >-
             Urgent. Boolean, to get only the urgent items (priority). Only valid
             on Next Actions. &urgent=true
-      operationId: /stuff/get_list
+      operationId: GetStuffList
       responses:
         '200':
           description: The reponse of list stuff
@@ -130,6 +149,10 @@ externalDocs:
 components:
   schemas:
     StuffResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/StuffWrapper'
+    StuffWrapper:
       properties:
         stuff:
           type: object
@@ -180,6 +203,34 @@ components:
             tags:
               type: array
               items: {}
+    OAuthFlowPasswordRequestBody:
+      type: object
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - grant_type
+        - client_id
+        - client_secret
+        - username
+        - password
+    OAuthFlowPasswordResponseBody:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        created_at:
+          type: integer
   links: {}
   callbacks: {}
   securitySchemes:

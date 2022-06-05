@@ -1,16 +1,17 @@
 # \DefaultApi
 
-All URIs are relative to *https://api.facilethings.com/v1*
+All URIs are relative to *https://api.facilethings.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**_stuff_get_list**](DefaultApi.md#_stuff_get_list) | **GET** /stuff/get_list | 
+[**get_stuff_list**](DefaultApi.md#get_stuff_list) | **GET** /v1/stuff/get_list | 
+[**oauth_token**](DefaultApi.md#oauth_token) | **POST** /oauth/token | login with OAuth
 
 
 
-## _stuff_get_list
+## get_stuff_list
 
-> crate::models::StuffResponse _stuff_get_list(list, page, tags, person, area, goal, focus, time, energy, urgent)
+> Vec<crate::models::StuffWrapper> get_stuff_list(list, page, tags, person, area, goal, focus, time, energy, urgent)
 
 
 
@@ -33,7 +34,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::StuffResponse**](StuffResponse.md)
+[**Vec<crate::models::StuffWrapper>**](StuffWrapper.md)
 
 ### Authorization
 
@@ -42,6 +43,36 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## oauth_token
+
+> crate::models::OAuthFlowPasswordResponseBody oauth_token(o_auth_flow_password_request_body)
+login with OAuth
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**o_auth_flow_password_request_body** | [**OAuthFlowPasswordRequestBody**](OAuthFlowPasswordRequestBody.md) |  | [required] |
+
+### Return type
+
+[**crate::models::OAuthFlowPasswordResponseBody**](OAuthFlowPasswordResponseBody.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

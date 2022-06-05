@@ -1,4 +1,4 @@
-# StuffStuff
+# StuffWrapperStuff
 
 ## Properties
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **checkpoints_count** | Option<**i32**> |  | [optional]
 **checkpoints_done** | Option<**i32**> |  | [optional]
 **writings_count** | Option<**i32**> |  | [optional]
-**project** | Option<[**crate::models::StuffStuffProject**](stuff_stuff_project.md)> |  | [optional]
+**project** | Option<[**crate::models::StuffWrapperStuffProject**](StuffWrapper_stuff_project.md)> |  | [optional]
 **tags** | Option<[**Vec<serde_json::Value>**](serde_json::Value.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

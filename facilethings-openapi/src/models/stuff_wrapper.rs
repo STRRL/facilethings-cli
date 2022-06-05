@@ -12,15 +12,15 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct StuffResponseStuffProject {
-    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+pub struct StuffWrapper {
+    #[serde(rename = "stuff", skip_serializing_if = "Option::is_none")]
+    pub stuff: Option<Box<crate::models::StuffWrapperStuff>>,
 }
 
-impl StuffResponseStuffProject {
-    pub fn new() -> StuffResponseStuffProject {
-        StuffResponseStuffProject {
-            name: None,
+impl StuffWrapper {
+    pub fn new() -> StuffWrapper {
+        StuffWrapper {
+            stuff: None,
         }
     }
 }

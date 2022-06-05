@@ -12,7 +12,7 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct StuffStuff {
+pub struct StuffWrapperStuff {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<i32>,
     #[serde(rename = "text", skip_serializing_if = "Option::is_none")]
@@ -40,14 +40,14 @@ pub struct StuffStuff {
     #[serde(rename = "writings_count", skip_serializing_if = "Option::is_none")]
     pub writings_count: Option<i32>,
     #[serde(rename = "project", skip_serializing_if = "Option::is_none")]
-    pub project: Option<Box<crate::models::StuffStuffProject>>,
+    pub project: Option<Box<crate::models::StuffWrapperStuffProject>>,
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<serde_json::Value>>,
 }
 
-impl StuffStuff {
-    pub fn new() -> StuffStuff {
-        StuffStuff {
+impl StuffWrapperStuff {
+    pub fn new() -> StuffWrapperStuff {
+        StuffWrapperStuff {
             id: None,
             text: None,
             created_at: None,

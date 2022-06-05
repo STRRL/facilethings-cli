@@ -12,14 +12,14 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct StuffStuffProject {
+pub struct StuffWrapperStuffProject {
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
-impl StuffStuffProject {
-    pub fn new() -> StuffStuffProject {
-        StuffStuffProject {
+impl StuffWrapperStuffProject {
+    pub fn new() -> StuffWrapperStuffProject {
+        StuffWrapperStuffProject {
             name: None,
         }
     }

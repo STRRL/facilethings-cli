@@ -1,6 +1,10 @@
-pub mod stuff_response;
-pub use self::stuff_response::StuffResponse;
-pub mod stuff_response_stuff;
-pub use self::stuff_response_stuff::StuffResponseStuff;
-pub mod stuff_response_stuff_project;
-pub use self::stuff_response_stuff_project::StuffResponseStuffProject;
+pub mod o_auth_flow_password_request_body;
+pub use self::o_auth_flow_password_request_body::OAuthFlowPasswordRequestBody;
+pub mod o_auth_flow_password_response_body;
+pub use self::o_auth_flow_password_response_body::OAuthFlowPasswordResponseBody;
+pub mod stuff_wrapper;
+pub use self::stuff_wrapper::StuffWrapper;
+pub mod stuff_wrapper_stuff;
+pub use self::stuff_wrapper_stuff::StuffWrapperStuff;
+pub mod stuff_wrapper_stuff_project;
+pub use self::stuff_wrapper_stuff_project::StuffWrapperStuffProject;

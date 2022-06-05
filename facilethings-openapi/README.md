@@ -22,18 +22,21 @@ facilethings-openapi = { path = "./facilethings-openapi" }
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.facilethings.com/v1*
+All URIs are relative to *https://api.facilethings.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**_stuff_get_list**](docs/DefaultApi.md#_stuff_get_list) | **GET** /stuff/get_list | 
+*DefaultApi* | [**get_stuff_list**](docs/DefaultApi.md#get_stuff_list) | **GET** /v1/stuff/get_list | 
+*DefaultApi* | [**oauth_token**](docs/DefaultApi.md#oauth_token) | **POST** /oauth/token | login with OAuth
 
 
 ## Documentation For Models
 
- - [StuffResponse](docs/StuffResponse.md)
- - [StuffResponseStuff](docs/StuffResponseStuff.md)
- - [StuffResponseStuffProject](docs/StuffResponseStuffProject.md)
+ - [OAuthFlowPasswordRequestBody](docs/OAuthFlowPasswordRequestBody.md)
+ - [OAuthFlowPasswordResponseBody](docs/OAuthFlowPasswordResponseBody.md)
+ - [StuffWrapper](docs/StuffWrapper.md)
+ - [StuffWrapperStuff](docs/StuffWrapperStuff.md)
+ - [StuffWrapperStuffProject](docs/StuffWrapperStuffProject.md)
 
 
 To get access to the crate's generated documentation, use:
